@@ -13,8 +13,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Anh Viet Pham',
       theme: ThemeData(
-          primaryColor: const Color(0xD0FF0000),
-          primaryColorDark: const Color(0xD0FF0000)),
+          primaryColor: Color(0xFF2845E7),
+          primaryColorDark: Color(0xFF2845E7)),
       home: DashboardScreenState(title: ''),
     );
   }
