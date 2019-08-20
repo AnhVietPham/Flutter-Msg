@@ -67,7 +67,7 @@ class _DashboardScreenState extends State<DashboardScreenState> {
           Calls("Calls"),
           Camera("Camera Screen"),
           Stories("Stories Screen"),
-          Contact("Contacts screen")
+          Contacts("Contacts screen")
         ],
         onPageChanged: onPageChanged,
         controller: _pageController,
