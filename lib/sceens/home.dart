@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../model/storiesModel.dart';
+import '../model/chatModel.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class Home extends StatelessWidget {
@@ -28,7 +29,7 @@ class Home extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.fromLTRB(0.0, 3.0, 0.0, 8.0),
+            padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 8.0),
           ),
           Container(
             height: 220.0,
@@ -39,7 +40,7 @@ class Home extends StatelessWidget {
                 itemBuilder: (context, position) => Column(
                       children: <Widget>[
                         Padding(
-                          padding: EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
+                          padding: EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 5.0),
                           child: Container(
                             color: Colors.grey[200],
                             width: 100.0,
@@ -57,7 +58,7 @@ class Home extends StatelessWidget {
                                                       .storyImageUrl),
                                               fit: BoxFit.cover),
                                           borderRadius:
-                                              BorderRadius.circular(10.0)),
+                                              BorderRadius.circular(20.0)),
                                       width: 100.0,
                                       height: 140.0,
                                       child: Padding(
@@ -79,7 +80,8 @@ class Home extends StatelessWidget {
                                   ],
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.fromLTRB(5.0, 65.0, 5.0, 0.0),
+                                  padding:
+                                      EdgeInsets.fromLTRB(5.0, 65.0, 5.0, 0.0),
                                   child: PhysicalModel(
                                     borderRadius: BorderRadius.circular(25.0),
                                     color: Colors.transparent,
@@ -109,6 +111,47 @@ class Home extends StatelessWidget {
                         )
                       ],
                     )),
+          ),
+          Expanded(
+            child: ListView.builder(
+                itemCount: chatMockData.length,
+                itemBuilder: (context, position) {
+                  return Padding(
+                    padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                    child: Card(
+                      elevation: 1.0,
+                      color: Color(0xFFFFFFFF),
+                      child: ListTile(
+                        leading: CircleAvatar(
+                          backgroundImage: CachedNetworkImageProvider(
+                              chatMockData[position].imageUrl),
+                        ),
+                        title: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text(
+                              chatMockData[position].name,
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              chatMockData[position].time,
+                              style:
+                                  TextStyle(color: Colors.grey, fontSize: 14.0),
+                            )
+                          ],
+                        ),
+                        subtitle: Container(
+                          padding: EdgeInsets.only(top: 5.0),
+                          child: Text(
+                            chatMockData[position].message,
+                            style:
+                                TextStyle(color: Colors.grey, fontSize: 15.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                }),
           )
         ],
       ),
